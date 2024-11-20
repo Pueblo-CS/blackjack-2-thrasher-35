@@ -17,6 +17,9 @@ function deal() {
     addPlayerCard(playerHand[0]);
     playerHand.push(getCard()); 
     addPlayerCard(playerHand[1]);
+    hiddenCard();
+    dealerHand.push(getCard());
+    addDealerCards();
 }
 
 function fillDeck() {
@@ -48,6 +51,51 @@ function addPlayerCard(card) {
     let playerArea = document.getElementById("player-area");
     let cardDiv = document.createElement("div");
     cardDiv.setAttribute("class", "card");
+    let facep = document.createElement("p");
+    let face = card.charAt(0);
+    if(face == "T"){
+        facep.innerHTML = "10";
+    }
+    else{
+        facep.innerHTML = face;
+    }
 
+    cardDiv.appendChild(facep);
+
+    let suitImg = document.createElement("img");
+    let suit = card.charAt(1);
     playerArea.appendChild(cardDiv);
+        if(suit == "c"){
+            suitImg.src  = "club.png";
+        }
+
+        else if(suit == "s"){
+            suitImg.src = "spade.png";
+        }
+
+        else if(suit == "d"){
+            suitImg.src = "diamond.png";
+        }
+
+        else if(suit == "h"){
+            suitImg.src = "heart.png";
+        }
+    cardDiv.appendChild(suitImg);
+   
+}
+
+function hiddenCard(card){
+    let hiddenCard = document.createElement("div");
+    hiddenCard.setAttribute("id", "hidden-card");
+    hiddenCard.setAttribute("class", "card");
+    hiddenCard.style.backgroundColor = "lightblue";
+    let dealerArea = document.getElementById("dealer-area")
+   dealerArea.appendChild(hiddenCard);
+}
+
+
+function addDealerCards(card){
+ let dealerCard = document.getElementById("dealer-Card");
+    let cardDiv = document.createElement("div");
+    cardDiv.setAttribute("class", "card");
 }
